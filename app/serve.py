@@ -46,6 +46,46 @@ def index():
     return render_template("index.htm")
 
 
+@app.route("/AboutUs")
+def about_us():
+    return render_template("about_us.htm")
+
+
+@app.route("/Capabilities")
+def capabilities():
+    return render_template("capabilities.htm")
+
+
+@app.route("/Careers")
+def careers():
+    return render_template("careers.htm")
+
+
+@app.route("/CaseStudies")
+def case_studies():
+    return render_template("case_studies.htm")
+
+
+@app.route("/Contact")
+def contact():
+    return render_template("contact.htm")
+
+
+@app.route("/Experience")
+def experience():
+    return render_template("experience.htm")
+
+
+@app.route("/References")
+def references():
+    return render_template("references.htm")
+
+
+@app.route("/Technology")
+def technology():
+    return render_template("technology.htm")
+
+
 if __name__ == "__main__":
     app.debug = True
     app.run(host="0.0.0.0")
