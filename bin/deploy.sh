@@ -7,11 +7,10 @@ git pull
 
 # Update python packages
 source `which virtualenvwrapper.sh`
-workon VIRTUALENV
+workon pharmadataassociates
 pip install -r requirements.txt
 
 # Configure settings
-cd GIT_REPOSITORY
 ln -sf .env.production .env
 
 # Restart services

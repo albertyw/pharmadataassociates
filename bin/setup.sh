@@ -9,8 +9,8 @@ sudo ln -s /var/www/log/nginx /var/log/nginx
 sudo ln -s ~/website /var/www/website
 
 # Clone repository
-git clone GIT_REPOSITORY
-sudo mv GIT_REPOSITORY /var/www/website
+git clone git@github.com:albertyw/pharmadataassociates
+sudo mv pharmadataassociates /var/www/website
 
 # Install nginx
 sudo add-apt-repository ppa:nginx/stable

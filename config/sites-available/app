@@ -4,19 +4,19 @@
 server {
     server_name     $server_addr;
     add_header      X-Frame-Options "SAMEORIGIN";
-    return          301 https://www.WEBSITE.com$request_uri;
+    return          301 https://www.pharmadataassociates.com$request_uri;
 }
 
 server {
     listen          80;
     server_name     _; # catch-all
-    rewrite         ^ https://www.WEBSITE.com$request_uri;
+    rewrite         ^ https://www.pharmadataassociates.com$request_uri;
 }
 
 # Change naked domain to www
 server {
     listen          443 spdy;
-    server_name     WEBSITE.com;
+    server_name     pharmadataassociates.com;
 
     ssl on;
     ssl_protocols               TLSv1 TLSv1.1 TLSv1.2;
@@ -24,11 +24,11 @@ server {
     ssl_prefer_server_ciphers   on;
     ssl_session_cache           shared:SSL:10m;
     ssl_session_timeout         10m;
-    ssl_certificate             /etc/nginx/ssl/1_WEBSITE.com_bundle.crt;
+    ssl_certificate             /etc/nginx/ssl/1_pharmadataassociates.com_bundle.crt;
     ssl_certificate_key         /etc/nginx/ssl/server.key;
     ssl_dhparam                 /etc/nginx/ssl/dhparams.pem;
 
-    rewrite         ^ https://www.WEBSITE.com$request_uri;
+    rewrite         ^ https://www.pharmadataassociates.com$request_uri;
 }
 
 
@@ -36,7 +36,7 @@ server {
 
 server {
     listen          443 spdy;
-    server_name     www.WEBSITE.com;
+    server_name     www.pharmadataassociates.com;
     access_log      /var/log/nginx/website.access.log;
     error_log       /var/log/nginx/website.error.log;
 
@@ -46,7 +46,7 @@ server {
     ssl_prefer_server_ciphers   on;
     ssl_session_cache           shared:SSL:10m;
     ssl_session_timeout         10m;
-    ssl_certificate             /etc/nginx/ssl/1_WEBSITE.com_bundle.crt;
+    ssl_certificate             /etc/nginx/ssl/1_pharmadataassociates.com_bundle.crt;
     ssl_certificate_key         /etc/nginx/ssl/server.key;
     ssl_dhparam                 /etc/nginx/ssl/dhparams.pem;
 
@@ -62,7 +62,7 @@ server {
 
     # static files used for the website
     location /static {
-        alias        "/var/www/website/WEBSITE.com/static/";
+        alias        "/var/www/website/pharmadataassociates.com/static/";
         try_files $uri.html $uri $uri/ =404;
         expires     7d;
         add_header Cache-Control "public";
