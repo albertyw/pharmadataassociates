@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, got_request_exception
+from flask import Flask, render_template, got_request_exception, redirect, url_for
 
 
 import dotenv
@@ -44,6 +44,11 @@ def inject_envs():
 @app.route("/")
 def index():
     return render_template("index.htm")
+
+
+@app.route("/home")
+def home():
+    return redirect(url_for("index"))
 
 
 @app.route("/AboutUs")
