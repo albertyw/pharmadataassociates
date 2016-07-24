@@ -25,7 +25,7 @@ server {
     ssl_session_cache           shared:SSL:10m;
     ssl_session_timeout         10m;
     ssl_certificate             /etc/nginx/ssl/1_pharmadataassociates.com_bundle.crt;
-    ssl_certificate_key         /etc/nginx/ssl/server.key;
+    ssl_certificate_key         /etc/nginx/ssl/private.key;
     ssl_dhparam                 /etc/nginx/ssl/dhparams.pem;
 
     rewrite         ^ https://www.pharmadataassociates.com$request_uri;
@@ -62,7 +62,7 @@ server {
 
     # static files used for the website
     location /static {
-        alias        "/var/www/website/pharmadataassociates.com/static/";
+        alias        "/var/www/website/app/static/";
         try_files $uri.html $uri $uri/ =404;
         expires     7d;
         add_header Cache-Control "public";
