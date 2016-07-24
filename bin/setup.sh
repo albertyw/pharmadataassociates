@@ -41,7 +41,7 @@ sudo pip3 install virtualenvwrapper
 
 # Install python packages
 . /usr/local/bin/virtualenvwrapper.sh
-mkvirtualenv --python=/usr/bin/python3 albertyw.com
+mkvirtualenv --python=/usr/bin/python3 pharmadataassociates
 pip3 install -r /var/www/website/requirements.txt
 sudo ln -s $HOME/.virtualenvs /var/www/.virtualenvs
 
