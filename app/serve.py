@@ -10,6 +10,7 @@ from getenv import env
 
 
 app = Flask(__name__)
+app.debug = env('DEBUG') == 'true'
 
 
 if env('ENV') == 'production':
@@ -93,5 +94,4 @@ def technology():
 
 
 if __name__ == "__main__":
-    app.debug = True
     app.run(host="0.0.0.0")
