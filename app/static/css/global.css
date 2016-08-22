@@ -3,6 +3,18 @@
     height: 25px;
 }
 
+@media (min-width: 768px) {
+    .navbar-brand {
+        float: none;
+    }
+
+    .navbar-brand>img {
+        display: inline;
+        height: 70px;
+    }
+}
+
+
 body {
     font-size: 16px;
 }
