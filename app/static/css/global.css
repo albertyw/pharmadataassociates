@@ -2,3 +2,25 @@
     display: inline;
     height: 25px;
 }
+
+@media (min-width: 768px) {
+    .navbar-header {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .navbar-brand {
+        float: none;
+    }
+
+    .navbar-brand>img {
+        display: inline;
+        height: 70px;
+        padding-right: 30px;
+    }
+}
+
+
+body {
+    font-size: 16px;
+}
