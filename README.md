@@ -6,3 +6,13 @@
 https://www.pharmadataassociates.com/
 
 PDA Website V2
+
+Development
+-----------
+
+With virtualenvwrapper:
+```
+mkvirtualenv pharmadataassociates -p python3.5
+pip install -r requirements.txt
+python app/serve.py
+```
