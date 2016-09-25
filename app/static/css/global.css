@@ -1,6 +1,5 @@
 .navbar-brand>img {
     display: inline;
-    height: 25px;
 }
 
 @media (min-width: 768px) {
@@ -15,7 +14,6 @@
 
     .navbar-brand>img {
         display: inline;
-        height: 70px;
         padding-right: 30px;
     }
 }
