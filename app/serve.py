@@ -93,5 +93,10 @@ def technology():
     return render_template("technology.htm")
 
 
+@app.route("/robots.txt")
+def robots():
+    return ""
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
