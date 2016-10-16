@@ -2,6 +2,7 @@ import os
 
 from flask import Flask, render_template, got_request_exception, redirect, \
     url_for
+from flask_sitemap import Sitemap
 
 import dotenv
 from getenv import env
@@ -12,6 +13,10 @@ dotenv.read_dotenv(os.path.join(root_path, '.env'))
 app = Flask(__name__)
 app.debug = env('DEBUG') == 'true'
 app.config['SERVER_NAME'] = env('SERVER_NAME')
+
+app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
+app.config['SITEMAP_URL_SCHEME'] = 'https'
+ext = Sitemap(app=app)
 
 
 if env('ENV') == 'production':
