@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Update repository
-cd /var/www/website/
+cd /var/www/website/ || exit 1
 git checkout master
 git pull
 
@@ -9,9 +9,6 @@ git pull
 source `which virtualenvwrapper.sh`
 workon pharmadataassociates
 pip install -r requirements.txt
-
-# Configure settings
-ln -sf .env.production .env
 
 # Restart services
 sudo service nginx restart

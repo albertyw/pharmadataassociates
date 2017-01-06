@@ -11,6 +11,8 @@ sudo ln -s ~/website /var/www/website
 # Clone repository
 git clone git@github.com:albertyw/pharmadataassociates
 sudo mv pharmadataassociates /var/www/website
+cd /var/www/website || exit 1
+ln -s .env.production .env
 
 # Install nginx
 sudo add-apt-repository ppa:nginx/stable
@@ -34,9 +36,7 @@ sudo service nginx restart
 sudo apt-get install -y uwsgi uwsgi-plugin-python3 python3-dev python3-setuptools
 
 # Install python/pip/virtualenvwrapper
-curl https://bootstrap.pypa.io/get-pip.py | sudo python2
 curl https://bootstrap.pypa.io/get-pip.py | sudo python3
-sudo pip2 install virtualenvwrapper
 sudo pip3 install virtualenvwrapper
 
 # Install python packages
