@@ -1,1 +1,35 @@
-/* CSS */
+.navbar-brand>img {
+    display: inline;
+}
+
+@media (min-width: 768px) {
+    .navbar-header {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .navbar-brand {
+        float: none;
+    }
+
+    .navbar-brand>img {
+        display: inline;
+        padding-right: 30px;
+    }
+}
+
+
+body {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+h1 {
+    margin-top: 0.5em;
+    padding-top: 0.5em;
+}
+
+h2 {
+    margin-top: 0.5em;
+    padding-top: 0.5em;
+}
