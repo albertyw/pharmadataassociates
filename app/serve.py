@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask, render_template, got_request_exception, redirect, \
-    url_for, abort
+    abort
 from flask_assets import Environment, Bundle
 from flask_sitemap import Sitemap
 
@@ -73,68 +73,42 @@ def index():
     return render_template("index.htm")
 
 
-@app.route("/about_us")
-def about_us():
-    return render_template("about_us.htm")
-
-
-@app.route("/capabilities")
-def capabilities():
-    return render_template("capabilities.htm")
-
-
-@app.route("/careers")
-def careers():
-    return render_template("careers.htm")
-
-
-@app.route("/case_studies")
-def case_studies():
-    return render_template("case_studies.htm")
-
-
-@app.route("/contact")
-def contact():
-    return render_template("contact.htm")
-
-
-@app.route("/experience")
-def experience():
-    return render_template("experience.htm")
-
-
-@app.route("/references")
-def references():
-    return render_template("references.htm")
-
-
-@app.route("/technology")
-def technology():
-    return render_template("technology.htm")
-
-
 @app.route("/robots.txt")
 def robots():
     return ""
 
 
+pages = {
+    "about_us": "about_us.htm",
+    "capabilities": "capabilities.htm",
+    "careers": "careers.htm",
+    "case_studies": "case_studies.htm",
+    "contact": "contact.htm",
+    "experience": "experience.htm",
+    "references": "references.htm",
+    "technology": "technology.htm",
+}
+
+
 redirects = {
-    "home": "index",
-    "AboutUs": "about_us",
-    "Capabilities": "capabilities",
-    "Careers": "careers",
-    "CaseStudies": "case_studies",
-    "Contact": "contact",
-    "Experience": "experience",
-    "References": "references",
-    "Technology": "technology",
+    "home": "/",
+    "AboutUs": "/about_us",
+    "Capabilities": "/capabilities",
+    "Careers": "/careers",
+    "CaseStudies": "/case_studies",
+    "Contact": "/contact",
+    "Experience": "/experience",
+    "References": "/references",
+    "Technology": "/technology",
 }
 
 
 @app.route("/<route>", methods=['GET'])
 def catchall_route(route):
+    if route in pages:
+        return render_template(pages[route])
     if route in redirects:
-        return redirect(url_for(redirects[route]))
+        return redirect(redirects[route])
     abort(404)
 
 
