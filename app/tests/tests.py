@@ -80,3 +80,7 @@ class PageCase(unittest.TestCase):
         response = self.app.get(path)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(urlparse(response.location).path, new_path)
+
+    def test_404(self):
+        response = self.app.get('/asdf')
+        self.assertEqual(response.status_code, 404)
