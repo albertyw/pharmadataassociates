@@ -73,11 +73,6 @@ def index():
     return render_template("index.htm")
 
 
-@app.route("/robots.txt")
-def robots():
-    return ""
-
-
 pages = {
     "about_us": "about_us.htm",
     "capabilities": "capabilities.htm",
@@ -87,6 +82,7 @@ pages = {
     "experience": "experience.htm",
     "references": "references.htm",
     "technology": "technology.htm",
+    "robots.txt": "robots.txt",
 }
 
 
