@@ -14,34 +14,29 @@ class PageCase(unittest.TestCase):
     def test_index_load(self):
         self.page_test('/', b'Vision Statement')
 
-    def test_home_load(self):
-        response = self.app.get('/home')
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(urlparse(response.location).path, '/')
-
     def test_about_us_load(self):
-        self.page_test('/AboutUs', b'About Us')
+        self.page_test('/about_us', b'About Us')
 
     def test_capabilities_load(self):
-        self.page_test('/Capabilities', b'Capabilities')
+        self.page_test('/capabilities', b'Capabilities')
 
     def test_careers_load(self):
-        self.page_test('/Careers', b'Careers')
+        self.page_test('/careers', b'Careers')
 
     def test_case_studies_load(self):
-        self.page_test('/CaseStudies', b'Case Studies')
+        self.page_test('/case_studies', b'Case Studies')
 
     def test_contact_load(self):
-        self.page_test('/Contact', b'Contact')
+        self.page_test('/contact', b'Contact')
 
     def test_experience_load(self):
-        self.page_test('/Experience', b'Experience')
+        self.page_test('/experience', b'Experience')
 
     def test_references_load(self):
-        self.page_test('/References', b'References')
+        self.page_test('/references', b'References')
 
     def test_technology_load(self):
-        self.page_test('/Technology', b'Technology')
+        self.page_test('/technology', b'Technology')
 
     def test_robots_load(self):
         self.page_test('/robots.txt', b'')
@@ -53,3 +48,35 @@ class PageCase(unittest.TestCase):
         response = self.app.get(path)
         self.assertEqual(response.status_code, 200)
         self.assertIn(string, response.get_data())
+
+    def test_about_us_redirect(self):
+        self.redirect_test('/AboutUs', '/about_us')
+
+    def test_capabilities_redirect(self):
+        self.redirect_test('/Capabilities', '/capabilities')
+
+    def test_careers_redirect(self):
+        self.redirect_test('/Careers', '/careers')
+
+    def test_case_studies_redirect(self):
+        self.redirect_test('/CaseStudies', '/case_studies')
+
+    def test_contact_redirect(self):
+        self.redirect_test('/Contact', '/contact')
+
+    def test_experience_redirect(self):
+        self.redirect_test('/Experience', '/experience')
+
+    def test_references_redirect(self):
+        self.redirect_test('/References', '/references')
+
+    def test_technology_redirect(self):
+        self.redirect_test('/Technology', '/technology')
+
+    def test_home_load(self):
+        self.redirect_test('/home', '/')
+
+    def redirect_test(self, path, new_path):
+        response = self.app.get(path)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(urlparse(response.location).path, new_path)

@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask, render_template, got_request_exception, redirect, \
-    url_for
+    url_for, abort
 from flask_assets import Environment, Bundle
 from flask_sitemap import Sitemap
 
@@ -78,42 +78,42 @@ def home():
     return redirect(url_for("index"))
 
 
-@app.route("/AboutUs")
+@app.route("/about_us")
 def about_us():
     return render_template("about_us.htm")
 
 
-@app.route("/Capabilities")
+@app.route("/capabilities")
 def capabilities():
     return render_template("capabilities.htm")
 
 
-@app.route("/Careers")
+@app.route("/careers")
 def careers():
     return render_template("careers.htm")
 
 
-@app.route("/CaseStudies")
+@app.route("/case_studies")
 def case_studies():
     return render_template("case_studies.htm")
 
 
-@app.route("/Contact")
+@app.route("/contact")
 def contact():
     return render_template("contact.htm")
 
 
-@app.route("/Experience")
+@app.route("/experience")
 def experience():
     return render_template("experience.htm")
 
 
-@app.route("/References")
+@app.route("/references")
 def references():
     return render_template("references.htm")
 
 
-@app.route("/Technology")
+@app.route("/technology")
 def technology():
     return render_template("technology.htm")
 
@@ -121,6 +121,25 @@ def technology():
 @app.route("/robots.txt")
 def robots():
     return ""
+
+
+redirects = {
+    "AboutUs": "about_us",
+    "Capabilities": "capabilities",
+    "Careers": "careers",
+    "CaseStudies": "case_studies",
+    "Contact": "contact",
+    "Experience": "experience",
+    "References": "references",
+    "Technology": "technology",
+}
+
+
+@app.route("/<route>", methods=['GET'])
+def catchall_route(route):
+    if route in redirects:
+        return redirect(url_for(redirects[route]))
+    abort(404)
 
 
 if __name__ == "__main__":
