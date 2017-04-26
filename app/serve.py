@@ -73,11 +73,6 @@ def index():
     return render_template("index.htm")
 
 
-@app.route("/home")
-def home():
-    return redirect(url_for("index"))
-
-
 @app.route("/about_us")
 def about_us():
     return render_template("about_us.htm")
@@ -124,6 +119,7 @@ def robots():
 
 
 redirects = {
+    "home": "index",
     "AboutUs": "about_us",
     "Capabilities": "capabilities",
     "Careers": "careers",
