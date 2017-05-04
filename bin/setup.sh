@@ -11,11 +11,11 @@ sudo hostnamectl set-hostname $HOSTNAME
 # Clone repository
 git clone git@github.com:albertyw/pharmadataassociates
 sudo mkdir -p /var/www
-sudo rm -rf /var/www/website
-sudo mv pharmadataassociates /var/www/website
-cd /var/www/website || exit 1
+sudo rm -rf /var/www/pharmadataassociates
+sudo mv pharmadataassociates /var/www/pharmadataassociates
+cd /var/www/pharmadataassociates || exit 1
 ln -s .env.production .env
-sudo ln -s /var/www/website ~/website
+sudo ln -s /var/www/pharmadataassociates ~/pharmadataassociates
 
 # Install nginx
 sudo add-apt-repository ppa:nginx/stable
@@ -24,8 +24,9 @@ sudo apt-get install -y nginx
 
 # Configure nginx
 sudo rm -rf /etc/nginx/sites-available
-sudo rm -rf /etc/nginx/sites-enabled
-sudo ln -s /var/www/website/config/sites-enabled /etc/nginx/sites-enabled
+sudo rm -rf /etc/nginx/sites-enabled/*
+sudo ln -s /var/www/pharmadataassociates/config/sites-available/app /etc/nginx/sites-enabled/pharmadataassociates-app
+sudo ln -s /var/www/pharmadataassociates/config/sites-available/headers /etc/nginx/sites-enabled/pharmadataassociates-headers
 sudo rm -rf /var/www/html
 
 # Secure nginx
@@ -51,7 +52,7 @@ sudo pip3 install virtualenvwrapper
 # shellcheck disable=SC1091
 . /usr/local/bin/virtualenvwrapper.sh
 mkvirtualenv --python=/usr/bin/python3 pharmadataassociates
-pip install -r /var/www/website/requirements.txt
+pip install -r /var/www/pharmadataassociates/requirements.txt
 sudo ln -s "$HOME/.virtualenvs" /var/www/.virtualenvs
 
 # Make generated static file directory writable
@@ -60,7 +61,7 @@ sudo chown www-data app/static/.webassets-cache
 
 # Set up uwsgi
 sudo rm -f /etc/systemd/system/uwsgi.service
-sudo ln -s /var/www/website/config/uwsgi/uwsgi.service /etc/systemd/system/uwsgi.service
+sudo ln -s /var/www/pharmadataassociates/config/uwsgi/uwsgi.service /etc/systemd/system/uwsgi.service
 
 # Start uwsgi
 sudo systemctl start uwsgi

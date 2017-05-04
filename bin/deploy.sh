@@ -4,7 +4,7 @@
 # It can be called from a CI/CD tool like Codeship.
 
 # Update repository
-cd /var/www/website/ || exit 1
+cd /var/www/pharmadataassociates/ || exit 1
 git checkout master
 git pull
 
@@ -19,4 +19,4 @@ sudo chown www-data app/static/.webassets-cache
 
 # Restart services
 sudo service nginx restart
-sudo systemctl restart uwsgi
+sudo systemctl restart pharmadataassociates-uwsgi

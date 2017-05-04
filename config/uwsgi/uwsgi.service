@@ -5,9 +5,9 @@ After=network.target
 [Service]
 User=www-data
 Group=www-data
-WorkingDirectory=/var/www/website
+WorkingDirectory=/var/www/pharmadataassociates
 Environment="PATH=/var/www/.virtualenvs/pharmadataassociates/bin"
-ExecStart=/var/www/.virtualenvs/pharmadataassociates/bin/uwsgi --ini /var/www/website/config/uwsgi/website.ini
+ExecStart=/var/www/.virtualenvs/pharmadataassociates/bin/uwsgi --ini /var/www/pharmadataassociatese/config/uwsgi/website.ini
 
 [Install]
 WantedBy=multi-user.target
