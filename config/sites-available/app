@@ -1,21 +1,6 @@
 ### Config ###
-# don't send the nginx version number in error pages and Server header
-server_tokens off;
 
 ### Redirects ###
-
-# Change IP address to domain name
-server {
-    include         sites-enabled/pharmadataassociates-headers;
-    server_name     $server_addr;
-    return          301 https://www.pharmadataassociates.com$request_uri;
-}
-
-server {
-    listen          80;
-    server_name     _; # catch-all
-    rewrite         ^ https://www.pharmadataassociates.com$request_uri;
-}
 
 # Change naked domain to www
 server {
@@ -39,7 +24,7 @@ server {
 ### Servers ###
 
 server {
-    listen          443 ssl http2 default_server;
+    listen          443 ssl http2;
     server_name     www.pharmadataassociates.com;
     access_log      /var/log/nginx/pharmadataassociates.access.log;
     error_log       /var/log/nginx/pharmadataassociates.error.log;
