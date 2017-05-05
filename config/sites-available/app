@@ -1,6 +1,11 @@
 ### Config ###
 
 ### Redirects ###
+server {
+    listen          80;
+    server_name     pharmadataassociates.com www.pharmadataassociates.com;
+    return          301 https://www.pharmadataassociates.com$request_uri;
+}
 
 # Change naked domain to www
 server {
