@@ -59,10 +59,6 @@ sudo ln -s "$HOME/.virtualenvs" /var/www/.virtualenvs
 sudo chown www-data app/static/gen
 sudo chown www-data app/static/.webassets-cache
 
-# Set up uwsgi
-sudo rm -f /etc/systemd/system/pharmadataassociates-uwsgi.service
-sudo ln -s /var/www/pharmadataassociates/config/uwsgi/pharmadataassociates-uwsgi.service /etc/systemd/system/pharmadataassociates-uwsgi.service
-
 # Start uwsgi
-sudo systemctl start pharmadataassociates-uwsgi
-sudo systemctl enable pharmadataassociates-uwsgi
+sudo systemctl enable /var/www/pharmadataassociates/config/uwsgi/pharmadataassociates-uwsgi.service
+sudo systemctl start pharmadataassociates-uwsgi.service
