@@ -34,6 +34,28 @@ cd app
 coverage run -m unittest discover
 ```
 
+### CI/CD
+
+This repo uses:
+
+```bash
+# Switch to python 3
+pyenv local 3.5
+pip install -r requirements.txt
+pip install -r requirements-test.txt
+ln -s .env.development .env
+
+# Test
+flake8
+cd app
+coverage run -m unittest
+coverage report
+codeclimate-test-reporter
+
+# Deployment
+ssh ubuntu@pharmadataassociates.com /var/www/pharmadataassociates/bin/deploy.sh
+```
+
 Production
 ----------
 
