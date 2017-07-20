@@ -5,6 +5,8 @@ from flask import Flask, render_template, got_request_exception, redirect, \
 from flask_assets import Environment, Bundle
 from flask_sitemap import Sitemap
 
+from routes import handlers
+
 import dotenv
 from getenv import env
 root_path = os.path.dirname(os.path.realpath(__file__)) + '/../'
@@ -68,44 +70,12 @@ def inject_envs():
     return {'ENV': envs}
 
 
-@app.route("/")
-def index():
-    return render_template("index.htm")
+app.register_blueprint(handlers)
 
 
-pages = {
-    "about_us": "about_us.htm",
-    "capabilities": "capabilities.htm",
-    "careers": "careers.htm",
-    "case_studies": "case_studies.htm",
-    "contact": "contact.htm",
-    "experience": "experience.htm",
-    "references": "references.htm",
-    "technology": "technology.htm",
-    "robots.txt": "robots.txt",
-}
-
-
-redirects = {
-    "home": "/",
-    "AboutUs": "/about_us",
-    "Capabilities": "/capabilities",
-    "Careers": "/careers",
-    "CaseStudies": "/case_studies",
-    "Contact": "/contact",
-    "Experience": "/experience",
-    "References": "/references",
-    "Technology": "/technology",
-}
-
-
-@app.route("/<route>", methods=['GET'])
-def catchall_route(route):
-    if route in pages:
-        return render_template(pages[route])
-    if route in redirects:
-        return redirect(redirects[route])
-    abort(404)
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.htm"), 404
 
 
 if __name__ == "__main__":
