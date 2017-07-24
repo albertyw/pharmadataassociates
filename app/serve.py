@@ -1,7 +1,6 @@
 import os
 
-from flask import Flask, render_template, got_request_exception, redirect, \
-    abort
+from flask import Flask, render_template, got_request_exception
 from flask_assets import Environment, Bundle
 from flask_sitemap import Sitemap
 
