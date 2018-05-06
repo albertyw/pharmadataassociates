@@ -3,6 +3,7 @@ from flask import (
     abort,
     redirect,
     render_template,
+    url_for,
 )
 
 
@@ -47,3 +48,8 @@ def catchall_route(route):
     if route in redirects:
         return redirect(redirects[route])
     abort(404)
+
+
+def sitemap_urls():
+    for route in pages:
+        yield url_for('handlers.catchall_route', route=route, _external=True)

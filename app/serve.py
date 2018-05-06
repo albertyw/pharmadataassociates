@@ -4,7 +4,7 @@ from flask import Flask, render_template, got_request_exception
 from flask_assets import Environment, Bundle
 from flask_sitemap import Sitemap
 
-from routes import handlers
+from routes import handlers, sitemap_urls
 
 import dotenv
 root_path = os.path.dirname(os.path.realpath(__file__)) + '/../'
@@ -19,6 +19,7 @@ app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
 app.config['SITEMAP_URL_SCHEME'] = 'https'
 assets = Environment(app)
 ext = Sitemap(app=app)
+ext.register_generator(sitemap_urls)
 
 
 js = Bundle(
