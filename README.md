@@ -1,7 +1,7 @@
 # Pharma Data Associates Website
 
 [ ![Codeship Status for albertyw/pharmadataassociates](https://codeship.com/projects/7e5b4e40-3428-0134-823e-26e7891ba113/status?branch=master)](https://codeship.com/projects/164911)
-[![Updates](https://pyup.io/repos/github/albertyw/pharmadataassociates.com/shield.svg)](https://pyup.io/repos/github/albertyw/pharmadataassociates.com/)
+[![Updates](https://pyup.io/repos/github/albertyw/pharmadataassociates/shield.svg)](https://pyup.io/repos/github/albertyw/pharmadataassociates/)
 [![Code Climate](https://codeclimate.com/github/albertyw/pharmadataassociates/badges/gpa.svg)](https://codeclimate.com/github/albertyw/pharmadataassociates)
 [![Test Coverage](https://codeclimate.com/github/albertyw/pharmadataassociates/badges/coverage.svg)](https://codeclimate.com/github/albertyw/pharmadataassociates/coverage)
 
