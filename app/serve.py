@@ -13,7 +13,8 @@ dotenv.load_dotenv(os.path.join(root_path, '.env'))
 
 app = Flask(__name__)
 app.debug = os.environ['DEBUG'] == 'true'
-app.config['SERVER_NAME'] = os.environ['SERVER_NAME']
+if os.environ['SERVER_NAME']:
+    app.config['SERVER_NAME'] = os.environ['SERVER_NAME']
 
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
 app.config['SITEMAP_URL_SCHEME'] = 'https'
@@ -66,6 +67,7 @@ def inject_envs():
     envs['ROLLBAR_CLIENT_TOKEN'] = os.environ['ROLLBAR_CLIENT_TOKEN']
     envs['SEGMENT_TOKEN'] = os.environ['SEGMENT_TOKEN']
     envs['ENV'] = os.environ['ENV']
+    envs['LOGFIT_CLIENT_TOKEN'] = os.environ['LOGFIT_CLIENT_TOKEN']
     return {'ENV': envs}
 
 
