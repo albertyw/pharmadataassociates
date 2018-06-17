@@ -30,6 +30,7 @@ python app/serve.py
 ### Running tests:
 
 ```bash
+mypy app --ignore-missing-imports
 cd app
 coverage run -m unittest discover
 ```
@@ -47,6 +48,7 @@ ln -s .env.development .env
 
 # Test
 flake8
+mypy app --ignore-missing-imports
 cd app
 coverage run -m unittest discover
 coverage report
