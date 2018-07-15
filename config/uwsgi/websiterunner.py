@@ -5,7 +5,6 @@ import monitor
 import newrelic.agent
 from syspath import git_root
 
-sys.path.append(os.path.join(git_root.path, 'app'))
 dotenv.load_dotenv(os.path.join(git_root.path, '.env'))
 
 monitor.start(interval=1.0)
