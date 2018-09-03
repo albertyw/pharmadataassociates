@@ -53,7 +53,14 @@ coverage report
 codeclimate-test-reporter
 
 # Deployment
-ssh ubuntu@pharmadataassociates.com /var/www/pharmadataassociates/bin/deploy.sh
+ssh ubuntu@pharmadataassociates.com pharmadataassociates/bin/deploy.sh
+```
+
+### Building and starting the docker container
+
+```bash
+docker build -t pharmadataassociates:test .
+docker run -t -i -p 127.0.0.1:5001:5001 pharmadataassociates:test
 ```
 
 Production
@@ -62,9 +69,6 @@ Production
 ### Setup
 
 ```bash
-mkvirtualenv pharmadataassociates -p python3.5
-pip install -r requirements.txt
-ln -s .env.production .env
 bin/setup.sh
 ```
 

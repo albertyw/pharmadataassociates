@@ -1,23 +1,21 @@
 #!/bin/bash
 
-# This script is meant to be run on a server with the production app running.
-# It can be called from a CI/CD tool like Codeship.
+# This script will build and deploy a new docker image
 
 # Update repository
-cd /var/www/pharmadataassociates/ || exit 1
+cd pharmadataassociates || exit 1
 git checkout master
 git fetch -tp
 git pull
 
-# Update python packages
-source `which virtualenvwrapper.sh`
-workon pharmadataassociates
-pip install -r requirements.txt
+# Build and start container
+docker build -t pharmadataassociates:production .
+docker stop pharmadataassociates || echo
+docker container prune -f
+docker run --detach --restart always -p 127.0.0.1:5001:5001 --name pharmadataassociates pharmadataassociates:production
 
-# Make generated static file directory writable
-sudo chown www-data app/static/gen
-sudo chown www-data app/static/.webassets-cache
+# Cleanup docker
+docker image prune -f
 
-# Restart services
-sudo service nginx restart
-sudo systemctl restart pharmadataassociates-uwsgi.service
+# Update nginx
+sudo service nginx reload

@@ -58,22 +58,14 @@ server {
     gzip_http_version 1.1;
     gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript;
 
-    # static files used for the website
-    location /static {
-        include      sites-enabled/pharmadataassociates-headers;
-        alias        "/var/www/pharmadataassociates/app/static/";
-        try_files $uri.html $uri $uri/ =404;
-        expires     7d;
-        add_header Cache-Control "public";
-    }
-
     location / {
-        include         sites-enabled/pharmadataassociates-headers;
-        uwsgi_pass      unix://tmp/pharmadataassociates.sock;
-        include         uwsgi_params;
-        uwsgi_param     UWSGI_SCHEME $scheme;
-        uwsgi_param     SERVER_SOFTWARE    nginx/$nginx_version;
-        expires     7d;
-        add_header Cache-Control "public";
+        include          sites-enabled/pharmadataassociates-headers;
+        proxy_pass       http://127.0.0.1:5001;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_buffering  off;
+        expires          7d;
+        add_header       Cache-Control "public";
     }
 }
