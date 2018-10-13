@@ -14,10 +14,15 @@ git pull
 docker build -t pharmadataassociates:production .
 docker stop pharmadataassociates || echo
 docker container prune -f
-docker run --detach --restart always -p 127.0.0.1:5001:5001 --name pharmadataassociates pharmadataassociates:production
+docker run \
+    --detach \
+    --restart always \
+    --publish=127.0.0.1:5001:5001 \
+    --network=host \
+    --name pharmadataassociates pharmadataassociates:production
 
 # Cleanup docker
-docker image prune -f --filter "until=14d"
+docker image prune -f --filter "until=336h"
 
 # Update nginx
 sudo service nginx reload
