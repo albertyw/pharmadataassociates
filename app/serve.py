@@ -25,7 +25,6 @@ ext.register_generator(sitemap_urls)
 
 js = Bundle(
     'js/jquery.js',
-    'js/tether.js',
     'js/bootstrap.js',
     'js/global.js',
     filters='rjsmin', output='gen/bundle.min.js'
@@ -33,7 +32,6 @@ js = Bundle(
 assets.register('js_all', js)
 css = Bundle(
     'css/normalize.css',
-    'css/tether.css',
     'css/bootstrap.css',
     'css/global.css',
     filters='pyscss', output='gen/bundle.min.css'
