@@ -7,23 +7,29 @@ set -ex
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 cd "$DIR"/..
 
-# Update repository
-git checkout master
-git fetch -tp
-git pull
+source .env
+
+if [  "$ENV" = "production" ]; then
+    # Update repository
+    git checkout master
+    git fetch -tp
+    git pull
+fi
 
 # Build and start container
-docker build -t pharmadataassociates:production .
+docker build -t pharmadataassociates:$ENV .
 docker stop pharmadataassociates || echo
 docker container prune -f
 docker run \
     --detach \
     --restart always \
     --publish=127.0.0.1:5001:5001 \
-    --name pharmadataassociates pharmadataassociates:production
+    --name pharmadataassociates pharmadataassociates:$ENV
 
-# Cleanup docker
-docker image prune -f --filter "until=336h"
+if [  "$ENV" = "production" ]; then
+    # Cleanup docker
+    docker image prune -f --filter "until=336h"
 
-# Update nginx
-sudo service nginx reload
+    # Update nginx
+    sudo service nginx reload
+fi
