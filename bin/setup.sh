@@ -22,8 +22,8 @@ sudo apt-get install -y nginx
 # Configure nginx
 sudo rm -rf /etc/nginx/sites-available
 sudo rm -rf /etc/nginx/sites-enabled/*
-sudo ln -s ~/pharmadataassociates/config/sites-available/app /etc/nginx/sites-enabled/pharmadataassociates-app
-sudo ln -s ~/pharmadataassociates/config/sites-available/headers /etc/nginx/sites-enabled/pharmadataassociates-headers
+sudo ln -s ~/pharmadataassociates/config/nginx/app /etc/nginx/sites-enabled/pharmadataassociates-app
+sudo ln -s ~/pharmadataassociates/config/nginx/headers /etc/nginx/sites-enabled/pharmadataassociates-headers
 sudo rm -rf /var/www/html
 
 # Secure nginx
@@ -39,3 +39,6 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt-get update
 sudo apt-get install -y docker-ce
 sudo usermod -aG docker ${USER}
+
+# Set up directory structures
+ln -s .env.production .env
