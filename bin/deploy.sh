@@ -9,7 +9,7 @@ cd "$DIR"/..
 
 source .env
 
-if [  "$ENV" = "production" ]; then
+if [ "$ENV" = "production" ]; then
     # Update repository
     git checkout master
     git fetch -tp
@@ -19,7 +19,7 @@ fi
 # Build and start container
 docker build -t pharmadataassociates:$ENV .
 docker stop pharmadataassociates || echo
-docker container prune -f
+docker container prune --force --filter "until=336h"
 docker run \
     --detach \
     --restart always \
@@ -27,9 +27,9 @@ docker run \
     --mount type=bind,source="$(pwd)"/app/static,target=/var/www/app/app/static \
     --name pharmadataassociates pharmadataassociates:$ENV
 
-if [  "$ENV" = "production" ]; then
+if [ "$ENV" = "production" ]; then
     # Cleanup docker
-    docker image prune -f --filter "until=336h"
+    docker image prune --force --filter "until=336h"
 
     # Update nginx
     sudo service nginx reload
