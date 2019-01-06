@@ -20,11 +20,13 @@ fi
 docker build -t pharmadataassociates:$ENV .
 docker stop pharmadataassociates || echo
 docker container prune --force --filter "until=336h"
+docker rm pharmadataassociates
 docker run \
     --detach \
     --restart always \
     --publish=127.0.0.1:5001:5001 \
     --mount type=bind,source="$(pwd)"/app/static,target=/var/www/app/app/static \
+    --mount type=bind,source="$(pwd)"/logs,target=/var/www/app/logs \
     --name pharmadataassociates pharmadataassociates:$ENV
 
 if [ "$ENV" = "production" ]; then
