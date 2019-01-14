@@ -18,9 +18,9 @@ fi
 
 # Build and start container
 docker build -t pharmadataassociates:$ENV .
-docker stop pharmadataassociates || echo
+docker stop pharmadataassociates || true
 docker container prune --force --filter "until=336h"
-docker rm pharmadataassociates || echo
+docker rm pharmadataassociates || true
 docker run \
     --detach \
     --restart always \
