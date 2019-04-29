@@ -19,6 +19,10 @@ mkvirtualenv pharmadataassociates -p python3.5
 pip install -r requirements.txt
 pip install -r requirements-test.txt
 ln -s .env.development .env
+
+# Install shellcheck
+# brew install shellcheck
+# sudo apt-get install shellcheck
 ```
 
 ### Spinning up the server:
@@ -30,7 +34,9 @@ python app/serve.py
 ### Running tests:
 
 ```bash
+flake8
 mypy app --ignore-missing-imports
+shellcheck --exclude=SC1091 bin/*
 coverage run -m unittest discover
 ```
 
@@ -48,6 +54,7 @@ ln -s .env.development .env
 # Test
 flake8
 mypy app --ignore-missing-imports
+shellcheck --exclude=SC1091 bin/*
 coverage run -m unittest discover
 coverage report
 codeclimate-test-reporter

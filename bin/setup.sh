@@ -5,10 +5,11 @@
 # requires sudo privileges to work and it should already be scaffolded using
 # bin/scaffold.sh
 
-set -ex
+set -exuo pipefail
+IFS=$'\n\t'
 
 # Setup server
-sudo hostnamectl set-hostname $HOSTNAME
+sudo hostnamectl set-hostname "$HOSTNAME"
 
 # Clone repository
 cd ~
@@ -38,7 +39,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 sudo apt-get update
 sudo apt-get install -y docker-ce
-sudo usermod -aG docker ${USER}
+sudo usermod -aG docker "${USER}"
 
 # Set up directory structures
 ln -s .env.production .env
