@@ -19,6 +19,7 @@ if os.environ.get('SERVER_NAME', ''):  # pragma: no cover
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
 app.config['SITEMAP_URL_SCHEME'] = 'https'
 assets = Environment(app)
+assets.config['cleancss_bin'] = 'node_modules/.bin/cleancss'
 ext = Sitemap(app=app)
 ext.register_generator(sitemap_urls)
 
