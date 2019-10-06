@@ -23,6 +23,7 @@ docker network inspect "pharmadataassociates" &>/dev/null ||
     docker network create --driver bridge "pharmadataassociates"
 docker stop "pharmadataassociates" || true
 docker container prune --force --filter "until=336h"
+docker image prune --force --filter "until=336h"
 docker container rm "pharmadataassociates" || true
 docker run \
     --detach \
