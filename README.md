@@ -15,7 +15,7 @@ Development
 ### Setup (using [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)):
 
 ```bash
-mkvirtualenv pharmadataassociates -p python3.7
+mkvirtualenv pharmadataassociates -p python3.8
 pip install -r requirements.txt
 pip install -r requirements-test.txt
 ln -s .env.development .env
@@ -46,7 +46,7 @@ This repo uses:
 
 ```bash
 # Switch to python 3
-pyenv local 3.7
+pyenv local 3.8
 pip install -r requirements.txt
 pip install -r requirements-test.txt
 ln -s .env.development .env
