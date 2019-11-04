@@ -19,6 +19,7 @@ mkvirtualenv pharmadataassociates -p python3.8
 pip install -r requirements.txt
 pip install -r requirements-test.txt
 ln -s .env.development .env
+npm install
 
 # Install shellcheck
 # brew install shellcheck
@@ -28,6 +29,7 @@ ln -s .env.development .env
 ### Spinning up the server:
 
 ```bash
+npm run minify
 python app/serve.py
 ```
 
@@ -36,7 +38,7 @@ python app/serve.py
 ```bash
 flake8
 mypy app --ignore-missing-imports
-shellcheck --exclude=SC1091 bin/*
+shellcheck --exclude=SC1091 bin/*.sh
 coverage run -m unittest discover
 ```
 

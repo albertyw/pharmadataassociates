@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="google-site-verification" content="13fc0S8EmvmI6Ru7Cir9hTUw1hrhiHJFgh_O1yCgXt4" />
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/vnd.microsoft.icon" />
-    {% assets "css_all" %}
-      <link rel="stylesheet" href="{{ ASSET_URL }}" />
-    {% endassets %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='gen/bundle.min.css') }}" />
     {% include "includes/rollbar.htm" %}
     {% include "includes/segment.htm" %}
     <title>{% block title %}{% endblock %}</title>
@@ -48,9 +46,6 @@
         {% endblock %}
       </footer>
     </div>
-    {% assets "js_all" %}
-      <script src="{{ ASSET_URL }}"></script>
-    {% endassets %}
-    {% include "includes/logfit.htm" %}
+    <script src="{{ url_for('static', filename='gen/bundle.min.js') }}"></script>
   </body>
 </html>
