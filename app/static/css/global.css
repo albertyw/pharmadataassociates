@@ -1,4 +1,4 @@
-.navbar-brand>img {
+.navbar-brand > img {
     display: inline;
 }
 
@@ -12,12 +12,11 @@
         float: none;
     }
 
-    .navbar-brand>img {
+    .navbar-brand > img {
         display: inline;
         padding-right: 30px;
     }
 }
-
 
 body {
     font-size: 16px;
