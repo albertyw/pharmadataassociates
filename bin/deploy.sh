@@ -22,8 +22,9 @@ docker build -t "pharmadataassociates:$ENV" .
 docker network inspect "pharmadataassociates" &>/dev/null ||
     docker network create --driver bridge "pharmadataassociates"
 docker stop "pharmadataassociates" || true
-docker container prune --force --filter "until=336h"
-docker image prune --force --filter "until=336h"
+docker container prune --force --filter "until=168h"
+docker image prune --force --filter "until=168h"
+docker volume prune --force
 docker container rm "pharmadataassociates" || true
 docker run \
     --detach \
@@ -36,7 +37,7 @@ docker run \
 
 if [ "$ENV" = "production" ]; then
     # Cleanup docker
-    docker image prune --force --filter "until=336h"
+    docker image prune --force --filter "until=168h"
 
     # Update nginx
     sudo service nginx reload
