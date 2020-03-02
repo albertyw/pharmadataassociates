@@ -8,37 +8,46 @@ IFS=$'\n\t'
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 cd "$DIR"/..
 
+CONTAINER="pharmadataassociates"
+PORT="5001"
+NETWORK="$CONTAINER"_net
+DEPLOY_BRANCH="${1:-}"
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+set +x  # Do not print contents of .env
 source .env
+set -x
 
-if [ "$ENV" = "production" ]; then
+if [ -n "$DEPLOY_BRANCH" ]; then
     # Update repository
-    git checkout master
+    git checkout "$DEPLOY_BRANCH"
     git fetch -tp
     git pull
 fi
 
-# Build and start container
+# Build container and network
 docker pull "$(grep FROM Dockerfile | awk '{print $2}')"
-docker build -t "pharmadataassociates:$ENV" .
-docker network inspect "pharmadataassociates" &>/dev/null ||
-    docker network create --driver bridge "pharmadataassociates"
-docker stop "pharmadataassociates" || true
-docker container prune --force --filter "until=168h"
-docker image prune --force --filter "until=168h"
-docker volume prune --force
-docker container rm "pharmadataassociates" || true
+docker build -t "$CONTAINER:$BRANCH" .
+docker network inspect "$NETWORK" &>/dev/null ||
+    docker network create --driver bridge "$NETWORK"
+
+# Start container
+docker stop "$CONTAINER" || true
+docker container rm "$CONTAINER" || true
 docker run \
     --detach \
-    --restart always \
-    --publish="127.0.0.1:5001:5001" \
-    --network="pharmadataassociates" \
+    --restart=always \
+    --publish="127.0.0.1:$PORT:$PORT" \
+    --network="$NETWORK" \
     --mount type=bind,source="$(pwd)"/app/static,target=/var/www/app/app/static \
     --mount type=bind,source="$(pwd)"/logs,target=/var/www/app/logs \
-    --name "pharmadataassociates" "pharmadataassociates:$ENV"
+    --name="$CONTAINER" "$CONTAINER:$BRANCH"
 
-if [ "$ENV" = "production" ]; then
+if [ "$ENV" = "production" ] && [ "$BRANCH" = "master" ]; then
     # Cleanup docker
+    docker container prune --force --filter "until=168h"
     docker image prune --force --filter "until=168h"
+    docker volume prune --force
+    docker network prune --force
 
     # Update nginx
     sudo service nginx reload

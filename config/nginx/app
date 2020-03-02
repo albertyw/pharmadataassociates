@@ -30,6 +30,8 @@ server {
 server {
     listen          443 ssl http2;
     server_name     www.pharmadataassociates.com;
+    access_log      /var/log/nginx/pharmadataassociates.access.log;
+    error_log       /var/log/nginx/pharmadataassociates.error.log;
     access_log      /home/albertyw/pharmadataassociates/logs/nginx/access.log;
     error_log       /home/albertyw/pharmadataassociates/logs/nginx/error.log;
 
