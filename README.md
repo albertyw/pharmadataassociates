@@ -83,7 +83,7 @@ Production
 bin/setup.sh
 ```
 
-### Deploment
+### Deployment
 
 ```bash
 bin/deploy.sh
