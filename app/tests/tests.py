@@ -49,7 +49,7 @@ class PageCase(unittest.TestCase):
         self.assertEqual(response.status_code, 404)
         self.assertIn(b'Not Found', response.get_data())
 
-    def page_test(self, path, string):
+    def page_test(self, path: str, string: bytes) -> None:
         response = self.app.get(path)
         self.assertEqual(response.status_code, 200)
         self.assertIn(string, response.get_data())
@@ -81,7 +81,7 @@ class PageCase(unittest.TestCase):
     def test_home_load(self) -> None:
         self.redirect_test('/home', '/')
 
-    def redirect_test(self, path, new_path):
+    def redirect_test(self, path: str, new_path: str) -> None:
         response = self.app.get(path)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(urlparse(response.location).path, new_path)

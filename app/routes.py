@@ -6,7 +6,7 @@ from flask import (
     url_for,
 )
 
-from typing import Any
+from typing import Any, Iterable
 
 
 handlers = Blueprint('handlers', __name__)
@@ -44,7 +44,7 @@ redirects = {
 
 
 @handlers.route("/<route>", methods=['GET'])
-def catchall_route(route):
+def catchall_route(route: str) -> Any:
     if route in pages:
         return render_template(pages[route])
     if route in redirects:
@@ -52,6 +52,6 @@ def catchall_route(route):
     abort(404)
 
 
-def sitemap_urls():
+def sitemap_urls() -> Iterable[Any]:
     for route in pages:
         yield url_for('handlers.catchall_route', route=route, _external=True)
