@@ -3,6 +3,7 @@ FROM ubuntu:20.04
 
 LABEL maintainer="git@albertyw.com"
 EXPOSE 5001
+HEALTHCHECK --interval=5s --timeout=3s CMD bin/healthcheck.sh || exit 1
 
 # Set locale
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -17,7 +18,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gpg-agent software-properties-common wget   `: Needed for add-apt-repository` \
-    && wget https://deb.nodesource.com/setup_12.x && bash setup_12.x \
+    && wget https://deb.nodesource.com/setup_14.x && bash setup_14.x \
     && rm -rf /var/lib/apt/lists/*
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential curl                        `: Basic-packages` \

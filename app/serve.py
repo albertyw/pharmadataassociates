@@ -11,7 +11,11 @@ from app.routes import handlers, sitemap_urls
 dotenv.load_dotenv(os.path.join(git_root.path, '.env'))
 
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    static_url_path='/static',
+    static_folder=os.path.join(git_root.path, 'static'),
+)
 app.debug = os.environ['DEBUG'] == 'true'
 if os.environ.get('SERVER_NAME', ''):  # pragma: no cover
     app.config['SERVER_NAME'] = os.environ['SERVER_NAME']
@@ -51,6 +55,11 @@ def inject_envs() -> Mapping[str, Mapping[str, str]]:
 
 
 app.register_blueprint(handlers)
+
+
+@app.route("/health")
+def health() -> Any:
+    return '{"status": "ok"}'
 
 
 @app.errorhandler(404)
