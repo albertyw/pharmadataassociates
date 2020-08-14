@@ -70,7 +70,7 @@ server {
     }
 
     location /static {
-        root             /home/albertyw/pharmadataassociates/app;
+        root             /home/albertyw/pharmadataassociates;
         expires          24h;
         include          sites-enabled/pharmadataassociates-headers;
         add_header       'Access-Control-Allow-Origin'   'https://www.pharmadataassociates.com';
