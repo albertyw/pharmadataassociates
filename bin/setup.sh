@@ -24,7 +24,6 @@ sudo apt-get install -y nginx
 sudo rm -rf /etc/nginx/sites-available
 sudo rm -rf /etc/nginx/sites-enabled/*
 sudo ln -s ~/pharmadataassociates/config/nginx/app /etc/nginx/sites-enabled/pharmadataassociates-app
-sudo ln -s ~/pharmadataassociates/config/nginx/headers /etc/nginx/sites-enabled/pharmadataassociates-headers
 sudo rm -rf /var/www/html
 
 # Secure nginx
