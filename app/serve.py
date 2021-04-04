@@ -1,10 +1,11 @@
 import os
+from typing import Any, Mapping
 
 import dotenv
 from flask import Flask, render_template, got_request_exception
 from flask_sitemap import Sitemap
 from syspath import git_root
-from typing import Any, Mapping
+from varsnap import varsnap
 
 from app.routes import handlers, sitemap_urls
 
@@ -58,11 +59,13 @@ app.register_blueprint(handlers)
 
 
 @app.route("/health")
+@varsnap
 def health() -> Any:
     return '{"status": "ok"}'
 
 
 @app.errorhandler(404)
+@varsnap
 def page_not_found(e: Exception) -> Any:
     return render_template("404.htm"), 404
 
