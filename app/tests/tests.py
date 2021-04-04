@@ -96,7 +96,7 @@ class PageCase(unittest.TestCase):
 
 class TestIntegration(unittest.TestCase):
     def test_varsnap(self) -> None:
-        with serve.app.test_requst_context():
+        with serve.app.test_request_context():
             matches, logs = test()
         if matches is None:
             raise unittest.case.SkipTest('No Snaps found')  # pragma: no cover
