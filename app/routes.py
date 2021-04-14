@@ -1,3 +1,5 @@
+from typing import Any, Iterable
+
 from flask import (
     Blueprint,
     abort,
@@ -5,8 +7,6 @@ from flask import (
     render_template,
     url_for,
 )
-
-from typing import Any, Iterable
 from varsnap import varsnap
 
 

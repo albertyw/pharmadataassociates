@@ -2,7 +2,7 @@ import os
 from typing import Any, Mapping
 
 import dotenv
-from flask import Flask, render_template, got_request_exception
+from flask import Flask, Response, render_template, got_request_exception
 from flask_sitemap import Sitemap
 from syspath import git_root
 from varsnap import varsnap
@@ -61,7 +61,7 @@ app.register_blueprint(handlers)
 @app.route("/health")
 @varsnap
 def health() -> Any:
-    return '{"status": "ok"}'
+    return Response('{"status": "ok"}', mimetype='text/json')
 
 
 @app.errorhandler(404)
