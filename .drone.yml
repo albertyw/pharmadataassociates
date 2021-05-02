@@ -28,7 +28,7 @@ steps:
       CC_TEST_REPORTER_ID: afb9126c934ed163825cf7afd37bc911f52eb8e10b6f019e5bc6337b2669f9e8
 
   - name: Test Node
-    image: node:14
+    image: node:16
     commands:
       - apt-get update && apt-get install -y fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0 libcups2 libgbm1 libgtk-3-0 libnspr4 libnss3 libx11-xcb1 libxss1 libxtst6 lsb-release xdg-utils
       - ln -fs .env.development .env
