@@ -50,5 +50,6 @@ if [ "$ENV" = "production" ]; then
     fi
 
     # Update nginx
+    sudo cp "/home/albertyw/pharmadataassociates/config/nginx/app" "/etc/nginx/sites-enabled/pharmadataassociates-app"
     sudo service nginx reload
 fi

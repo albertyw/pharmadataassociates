@@ -12,5 +12,14 @@ IFS=$'\n\t'
 cd ~
 git clone "git@github.com:albertyw/pharmadataassociates"
 
+# Configure nginx
+sudo rm /etc/nginx/nginx.conf
+sudo rm -rf /etc/nginx/sites-available
+sudo cp "/home/albertyw/pharmadataassociates/config/nginx/nginx.conf" "/etc/nginx/nginx.conf"
+sudo cp "/home/albertyw/pharmadataassociates/config/nginx/gzip.conf" "/etc/nginx/snippets/gzip.conf"
+sudo cp "/home/albertyw/pharmadataassociates/config/nginx/headers.conf" "/etc/nginx/snippets/headers.conf"
+sudo cp "/home/albertyw/pharmadataassociates/config/nginx/ssl.conf" "/etc/nginx/snippets/ssl.conf"
+sudo rm -rf /var/www/html
+
 # Set up directory structures
 ln -s .env.production .env
