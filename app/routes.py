@@ -46,6 +46,7 @@ redirects = {
 
 
 @handlers.route("/<route>", methods=['GET'])
+@varsnap
 def catchall_route(route: str) -> Any:
     if route in pages:
         return render_template(pages[route])
