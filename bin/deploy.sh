@@ -51,5 +51,5 @@ if [ "$ENV" = "production" ]; then
 
     # Update nginx
     sudo cp "/home/albertyw/pharmadataassociates/config/nginx/app" "/etc/nginx/sites-enabled/pharmadataassociates-app"
-    docker container restart nginx
+    docker exec nginx /etc/init.d/nginx reload
 fi
