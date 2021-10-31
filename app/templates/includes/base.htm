@@ -5,8 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="google-site-verification" content="13fc0S8EmvmI6Ru7Cir9hTUw1hrhiHJFgh_O1yCgXt4" />
-    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/vnd.microsoft.icon" />
+    <link rel="alternate" href="{{ request.base_url }}" hreflang="en-us" />
     <link rel="stylesheet" href="{{ url_for('static', filename='gen/bundle.min.css') }}" />
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
     <meta name="Description" content="{% block description %}{% endblock %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/favicon/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/favicon/favicon-32x32.png') }}">
