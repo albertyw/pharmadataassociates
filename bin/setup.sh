@@ -19,6 +19,7 @@ sudo cp "/home/albertyw/pharmadataassociates/config/nginx/nginx.conf" "/etc/ngin
 sudo cp "/home/albertyw/pharmadataassociates/config/nginx/gzip.conf" "/etc/nginx/snippets/gzip.conf"
 sudo cp "/home/albertyw/pharmadataassociates/config/nginx/headers.conf" "/etc/nginx/snippets/headers.conf"
 sudo cp "/home/albertyw/pharmadataassociates/config/nginx/ssl.conf" "/etc/nginx/snippets/ssl.conf"
+sudo mkdir -p "/var/log/nginx/pharmadataassociates/"
 sudo rm -rf /var/www/html
 
 # Set up directory structures
