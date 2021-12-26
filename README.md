@@ -38,7 +38,7 @@ python app/serve.py
 
 ```bash
 flake8
-mypy app --ignore-missing-imports --strict
+mypy . --ignore-missing-imports --strict
 shellcheck --exclude=SC1091 bin/*.sh
 coverage run -m unittest discover
 npm test
@@ -57,7 +57,7 @@ ln -s .env.development .env
 
 # Test
 flake8
-mypy app --ignore-missing-imports --strict
+mypy . --ignore-missing-imports --strict
 shellcheck --exclude=SC1091 bin/*.sh
 coverage run -m unittest discover
 coverage report
