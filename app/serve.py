@@ -5,7 +5,6 @@ import dotenv
 from flask import Flask, Response, render_template, got_request_exception
 from flask_sitemap import Sitemap
 from syspath import git_root
-from varsnap import varsnap
 
 from app.routes import handlers, sitemap_urls
 
