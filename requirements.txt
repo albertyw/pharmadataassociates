@@ -1,12 +1,11 @@
 # Core packages
 python-dotenv==0.19.2  # Read environment variables from .env
-Flask==2.0.2           # Web microframework
+Flask==2.0.3           # Web microframework
 uWSGI==2.0.20          # Application server
 syspath==3.0.0         # Modify paths
 
 # Features
-git+git://github.com/albertyw/flask-sitemap@python-3-10#flask-sitemap
-# Web sitemaps
+flask-sitemap==0.4.0   # Web sitemaps
 
 # Monitoring/tracking/logging
 blinker==1.4           # Dependency of rollbar
