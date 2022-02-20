@@ -72,7 +72,7 @@ ssh ubuntu@pharmadataassociates.com pharmadataassociates/bin/deploy.sh
 
 ```bash
 docker build -t pharmadataassociates:test .
-docker run -t -i -p 127.0.0.1:5001:5001 pharmadataassociates:test
+docker run -t -i -p 127.0.0.1:5001:5000 pharmadataassociates:test
 ```
 
 Production
