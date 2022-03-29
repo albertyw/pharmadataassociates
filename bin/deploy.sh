@@ -9,7 +9,6 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 cd "$DIR"/.. || exit 1
 
 CONTAINER="pharmadataassociates"
-PORT="5001"
 NETWORK="$CONTAINER"_net
 DEPLOY_BRANCH="${1:-}"
 BRANCH="$(git rev-parse --abbrev-ref HEAD)"
@@ -35,7 +34,7 @@ docker container rm "$CONTAINER" || true
 docker run \
     --detach \
     --restart=always \
-    --publish="127.0.0.1:$PORT:5000" \
+    --publish="127.0.0.1:5000:5000" \
     --network="$NETWORK" \
     --mount type=bind,source="$(pwd)"/static,target=/var/www/app/static \
     --mount type=bind,source="$(pwd)"/logs,target=/var/www/app/logs \
