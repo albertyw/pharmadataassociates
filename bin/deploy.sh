@@ -34,7 +34,7 @@ docker container rm "$CONTAINER" || true
 docker run \
     --detach \
     --restart=always \
-    --publish="127.0.0.1:5000:5000" \
+    --publish="127.0.0.1:5001:5000" \
     --network="$NETWORK" \
     --mount type=bind,source="$(pwd)"/static,target=/var/www/app/static \
     --mount type=bind,source="$(pwd)"/logs,target=/var/www/app/logs \
