@@ -27,10 +27,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Set up directory structures
-RUN mkdir -p /var/www/app
-COPY . /var/www/app
-COPY --from=node ./static/gen /var/www/app/static/gen
 WORKDIR /var/www/app
+RUN mkdir -p .
+COPY . .
+COPY --from=node ./static/gen ./static/gen
 
 # Set up dependencies
 RUN pip install --no-cache-dir -r requirements.txt \
