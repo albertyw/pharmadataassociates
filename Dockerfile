@@ -1,3 +1,10 @@
+FROM node:16 as node
+COPY . /var/www/app
+WORKDIR /var/www/app
+RUN npm ci --only=production \
+      && npm run minify
+
+
 FROM python:3.10-bullseye
 
 LABEL maintainer="git@albertyw.com"
@@ -24,6 +31,7 @@ RUN curl https://deb.nodesource.com/setup_16.x | bash \
 # Set up directory structures
 RUN mkdir -p /var/www/app
 COPY . /var/www/app
+COPY --from=node /var/www/app/static/gen /var/www/app/static/gen
 WORKDIR /var/www/app
 
 # Set up dependencies
