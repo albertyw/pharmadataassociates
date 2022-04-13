@@ -19,12 +19,10 @@ ENV LC_ALL en_US.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install dependencies
-RUN curl https://deb.nodesource.com/setup_16.x | bash \
-    && apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     locales                                     `: Basic-packages` \
     supervisor                                  `: Runnning python in daemon mode` \
     logrotate                                   `: Rotate logs because uWSGI has bugs` \
-    nodejs                                      `: Javascript assets` \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
     && rm -rf /var/lib/apt/lists/*
 
@@ -36,8 +34,6 @@ WORKDIR /var/www/app
 
 # Set up dependencies
 RUN pip install --no-cache-dir -r requirements.txt \
-    && npm ci --only=production \
-    && npm run minify \
     && cp config/logrotate /etc/logrotate.d/uwsgi
 
 # Set startup script
