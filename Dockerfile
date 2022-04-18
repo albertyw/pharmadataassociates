@@ -2,7 +2,7 @@ FROM node:16 as node
 WORKDIR /
 COPY . .
 RUN npm ci --only=production \
-      && npm run minify
+    && npm run minify
 
 
 FROM python:3.10-bullseye
