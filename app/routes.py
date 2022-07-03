@@ -15,7 +15,7 @@ handlers = Blueprint('handlers', __name__)
 
 @handlers.route("/")
 @varsnap
-def index() -> Any:
+def index() -> str:
     return render_template("index.htm")
 
 
