@@ -56,6 +56,7 @@ class PageCase(unittest.TestCase):
         response = self.app.get(path)
         self.assertEqual(response.status_code, 200)
         self.assertIn(string, response.get_data())
+        response.close()
 
     def test_about_us_redirect(self) -> None:
         self.redirect_test('/AboutUs', '/about_us')

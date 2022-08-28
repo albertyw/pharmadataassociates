@@ -28,7 +28,6 @@ pages = {
     "experience": "experience.htm",
     "references": "references.htm",
     "technology": "technology.htm",
-    "robots.txt": "robots.txt",
 }
 
 
