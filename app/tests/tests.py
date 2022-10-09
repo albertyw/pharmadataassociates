@@ -103,7 +103,10 @@ class PageCase(unittest.TestCase):
 
 class TestIntegration(unittest.TestCase):
     def test_varsnap(self) -> None:
-        with serve.app.test_request_context():
+        serve.app.config['SERVER_NAME'] = 'www.pharmadataassociates.com'
+        with serve.app.test_request_context(
+            environ_overrides={'wsgi.url_scheme': 'https'}
+        ):
             matches, logs = test()
         if matches is None:
             raise unittest.case.SkipTest('No Snaps found')  # pragma: no cover
