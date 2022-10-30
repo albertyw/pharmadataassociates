@@ -1,6 +1,7 @@
 import unittest
 from urllib.parse import urlparse
 
+from dotenv import dotenv_values
 from varsnap import test
 
 from app import serve
@@ -103,7 +104,8 @@ class PageCase(unittest.TestCase):
 
 class TestIntegration(unittest.TestCase):
     def test_varsnap(self) -> None:
-        serve.app.config['SERVER_NAME'] = 'www.pharmadataassociates.com'
+        config = dotenv_values('.env.production')
+        serve.app.config['SERVER_NAME'] = config['SERVER_NAME']
         with serve.app.test_request_context(
             environ_overrides={'wsgi.url_scheme': 'https'}
         ):
