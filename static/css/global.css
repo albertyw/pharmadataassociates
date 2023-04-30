@@ -2,7 +2,7 @@
     display: inline;
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
     .navbar-header {
         padding-left: 15px;
         padding-right: 15px;
