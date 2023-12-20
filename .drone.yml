@@ -25,7 +25,7 @@ steps:
       CC_TEST_REPORTER_ID: afb9126c934ed163825cf7afd37bc911f52eb8e10b6f019e5bc6337b2669f9e8
 
   - name: Test Node
-    image: satantime/puppeteer-node:20-bookworm-slim
+    image: satantime/puppeteer-node:21-bookworm-slim
     commands:
       - ln -fs .env.development .env
       - apt-get update && apt-get install -y chromium
