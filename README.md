@@ -17,8 +17,7 @@ Development
 
 ```bash
 mkvirtualenv pharmadataassociates -p python3.12
-pip install -r requirements.txt
-pip install -r requirements-test.txt
+pip install -e .[test]
 ln -s .env.development .env
 npm install
 
@@ -51,8 +50,7 @@ This repo uses:
 ```bash
 # Switch to python 3
 pyenv local 3.12
-pip install -r requirements.txt
-pip install -r requirements-test.txt
+pip install -e .[test]
 ln -s .env.development .env
 
 # Test

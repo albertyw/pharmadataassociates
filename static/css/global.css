@@ -1,3 +1,22 @@
+#main a:visited {
+    color: revert;
+}
+
+body {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+h1 {
+    margin-top: 0.5em;
+    padding-top: 0.5em;
+}
+
+h2 {
+    margin-top: 0.5em;
+    padding-top: 0.5em;
+}
+
 .navbar-brand > img {
     display: inline;
 }
@@ -18,17 +37,3 @@
     }
 }
 
-body {
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-h1 {
-    margin-top: 0.5em;
-    padding-top: 0.5em;
-}
-
-h2 {
-    margin-top: 0.5em;
-    padding-top: 0.5em;
-}
