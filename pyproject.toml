@@ -3,8 +3,8 @@ name = "pharmadataassociates"
 version = "1.0.0"
 dependencies = [
     # Core packages
-    "python-dotenv==1.0.0",   # Read environment variables from .env
-    "Flask==3.0.0",           # Web microframework
+    "python-dotenv==1.0.1",   # Read environment variables from .env
+    "Flask==3.0.2",           # Web microframework
     "gunicorn==21.2.0",       # WSGI server
     "syspath==3.0.5",         # Modify paths
 
@@ -24,9 +24,9 @@ py-modules = []
 [project.optional-dependencies]
 test = [
     # Testing
-    "coverage==7.3.4",                  # Test coverage
-    "mypy==1.7.1",                      # Type checking
-    "ruff==0.1.8",                      # Python linter
+    "coverage==7.4.1",                  # Test coverage
+    "mypy==1.8.0",                      # Type checking
+    "ruff==0.2.1",                      # Python linter
 ]
 
 [tool.ruff]
