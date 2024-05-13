@@ -107,7 +107,7 @@ class TestIntegration(unittest.TestCase):
         config = dotenv_values('.env.production')
         serve.app.config['SERVER_NAME'] = config['SERVER_NAME']
         with serve.app.test_request_context(
-            environ_overrides={'wsgi.url_scheme': 'https'}
+            environ_overrides={'wsgi.url_scheme': 'https'},
         ):
             matches, logs = test()
         if matches is None:
