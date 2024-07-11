@@ -1,7 +1,6 @@
 # Pharma Data Associates Website
 
 [![Build Status](https://drone.albertyw.com/api/badges/albertyw/pharmadataassociates/status.svg)](https://drone.albertyw.com/albertyw/pharmadataassociates)
-[![Updates](https://pyup.io/repos/github/albertyw/pharmadataassociates/shield.svg)](https://pyup.io/repos/github/albertyw/pharmadataassociates/)
 [![Code Climate](https://codeclimate.com/github/albertyw/pharmadataassociates/badges/gpa.svg)](https://codeclimate.com/github/albertyw/pharmadataassociates)
 [![Test Coverage](https://codeclimate.com/github/albertyw/pharmadataassociates/badges/coverage.svg)](https://codeclimate.com/github/albertyw/pharmadataassociates/coverage)
 [![Varsnap Status](https://www.varsnap.com/project/8aa438e7-9242-485b-ac1b-c0bab8630069/varsnap_badge.svg)](https://www.varsnap.com/project/8aa438e7-9242-485b-ac1b-c0bab8630069/)
