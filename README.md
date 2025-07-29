@@ -1,8 +1,8 @@
 # Pharma Data Associates Website
 
 [![Build Status](https://drone.albertyw.com/api/badges/albertyw/pharmadataassociates/status.svg)](https://drone.albertyw.com/albertyw/pharmadataassociates)
-[![Code Climate](https://codeclimate.com/github/albertyw/pharmadataassociates/badges/gpa.svg)](https://codeclimate.com/github/albertyw/pharmadataassociates)
-[![Test Coverage](https://codeclimate.com/github/albertyw/pharmadataassociates/badges/coverage.svg)](https://codeclimate.com/github/albertyw/pharmadataassociates/coverage)
+[![Maintainability](https://qlty.sh/gh/albertyw/projects/pharmadataassociates/maintainability.svg)](https://qlty.sh/gh/albertyw/projects/pharmadataassociates)
+[![Code Coverage](https://qlty.sh/gh/albertyw/projects/pharmadataassociates/coverage.svg)](https://qlty.sh/gh/albertyw/projects/pharmadataassociates)
 [![Varsnap Status](https://www.varsnap.com/project/8aa438e7-9242-485b-ac1b-c0bab8630069/varsnap_badge.svg)](https://www.varsnap.com/project/8aa438e7-9242-485b-ac1b-c0bab8630069/)
 
 https://www.pharmadataassociates.com/
@@ -62,7 +62,6 @@ mypy .
 shellcheck --exclude=SC1091 bin/*.sh
 coverage run -m unittest discover
 coverage report
-codeclimate-test-reporter
 npm test
 
 # Deployment
