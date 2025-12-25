@@ -13,8 +13,9 @@ Development
 -----------
 
 ### Setup
-Using [python venv](https://docs.python.org/3/library/venv.html) and
-[direnv](https://github.com/direnv/direnv)
+
+Using [python venv](https://docs.python.org/3/library/venv.html),
+[direnv](https://github.com/direnv/direnv), and [pnpm](http://pnpm.io/).
 
 ```bash
 python3.14 -m venv env
@@ -22,7 +23,7 @@ printf "source env/bin/activate\nunset PS1\n" > .envrc
 direnv allow
 pip install -e .[test]
 ln -s .env.development .env
-npm install
+pnpm install
 
 # Install shellcheck
 # brew install shellcheck
@@ -32,7 +33,7 @@ npm install
 ### Spinning up the server:
 
 ```bash
-npm run build:dev
+pnpm run build:dev
 python app/serve.py
 ```
 
@@ -43,7 +44,7 @@ ruff check .
 mypy .
 shellcheck --exclude=SC1091 bin/*.sh
 coverage run -m unittest discover
-npm test
+pnpm test
 ```
 
 ### CI/CD
@@ -62,7 +63,7 @@ mypy .
 shellcheck --exclude=SC1091 bin/*.sh
 coverage run -m unittest discover
 coverage report
-npm test
+pnpm test
 
 # Deployment
 ssh ubuntu@pharmadataassociates.com pharmadataassociates/bin/deploy.sh
