@@ -7,7 +7,6 @@
     "*.css"
   ],
   "scripts": {
-    "minify": "node bin/minify.ts",
     "eslint": "eslint -c .eslint.config.ts .",
     "stylelint": "stylelint static/css/*",
     "test": "pnpm run build:dev && pnpm run eslint && pnpm run stylelint && pnpm run wdio",
