@@ -102,6 +102,18 @@ class PageCase(unittest.TestCase):
         self.assertEqual(response.status_code, 404)
 
 
+class ValidateDebugCase(unittest.TestCase):
+    def test_allows_debug_outside_production(self) -> None:
+        self.assertTrue(serve.validate_debug('development', True))
+
+    def test_allows_production_without_debug(self) -> None:
+        self.assertFalse(serve.validate_debug('production', False))
+
+    def test_rejects_debug_in_production(self) -> None:
+        with self.assertRaises(RuntimeError):
+            serve.validate_debug('production', True)
+
+
 class TestIntegration(unittest.TestCase):
     def test_varsnap(self) -> None:
         config = dotenv_values('.env.production')
